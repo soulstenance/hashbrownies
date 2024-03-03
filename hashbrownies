@@ -2,3 +2,16 @@
 echo "Welcome to Hashbrownies, a simple tool for generating and scanning checksum files."
 echo "This software is licensed under GPL v3 and is provided as-is with no guarantee of suitability for a particular purpose. Use at your own risk."
 echo ""
+
+read -p "Stuff's about to happen. You ready y/N? " ANSWER0
+case "$ANSWER0" in
+	[yY] | yes)
+		echo "Ok! Let's gooo!"
+		echo "This was a dry run - nothing happened."
+		;;
+	"" | [nN] | no)
+		echo "Ok. Goodbye!"
+		;;
+	*)
+		echo "Ok. Goodbye!"
+esac
