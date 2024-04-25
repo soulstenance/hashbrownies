@@ -3,15 +3,72 @@ echo "Welcome to Hashbrownies, a simple tool for generating and scanning checksu
 echo "This software is licensed under GPL v3 and is provided as-is with no guarantee of suitability for a particular purpose. Use at your own risk."
 echo ""
 
-read -p "Stuff's about to happen. You ready y/N? " ANSWER0
+# Concept work
+echo "1 - Scan" && echo "2 - New"
+read -p "Would you like to scan a checksum file or create a new one? (default 1) " ANSWER0
 case "$ANSWER0" in
-	[yY] | yes)
-		echo "Ok! Let's gooo!"
-		echo "This was a dry run - nothing happened."
+	1 | scan | [sS] | "")
+		echo ""
+		echo "1 - MD5 (fastest, shortest, not recommended for security)"
+		echo "2 - SHA256 (slower, longer, more secure) - COMING SOON"
+		echo "3 - SHA512 (very slow and long, very secure) - COMING SOON"
+		echo "4 - SHA3-256 (latest cutting edge standard, additional package required) - COMING SOON"
+		read -p "What type of checksum file would you like to scan? (default 1) " ANSWER1
+		case "$ANSWER1" in
+			1 | md5 | "")
+				echo "MD5 scan..."
+				exit 0
+				;;
+			2 | 256)
+				echo "SHA256 scan coming soon..."
+				exit 0
+				;;
+			3 | 512)
+				echo "SHA512 scan coming soon..."
+				exit 0
+				;;
+			4 | sha3)
+				echo "SHA3-256 scan coming soon..."
+				exit 0
+				;;
+			*)
+				echo "ERROR: Invalid response - Aborted."
+				exit 2
+				;;
+		esac
 		;;
-	"" | [nN] | no)
-		echo "Ok. Goodbye!"
+	2 | new | [nN])
+		echo ""
+		echo "1 - MD5 (fastest, shortest, not recommended for security)"
+		echo "2 - SHA256 (slower, longer, more secure) - COMING SOON"
+		echo "3 - SHA512 (very slow and long, very secure) - COMING SOON"
+		echo "4 - SHA3-256 (latest cutting edge standard, additional package required) - COMING SOON"
+		read -p "What type of checksum file would you like to create? (default 1) " ANSWER2
+		case "$ANSWER2" in
+			1 | md5 | "")
+				echo "MD5 make..."
+				exit 0
+				;;
+			2 | 256)
+				echo "SHA256 make coming soon..."
+				exit 0
+				;;
+			3 | 512)
+				echo "SHA512 make coming soon..."
+				exit 0
+				;;
+			4 | sha3)
+				echo "SHA3-256 make coming soon..."
+				exit 0
+				;;
+			*)
+				echo "ERROR: Invalid response - Aborted."
+				exit 2
+				;;
+		esac
 		;;
 	*)
-		echo "Ok. Goodbye!"
+		echo "ERROR: Invalid response - Aborted."
+		exit 2
 esac
+
