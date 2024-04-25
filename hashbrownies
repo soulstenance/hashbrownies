@@ -16,20 +16,16 @@ case "$ANSWER0" in
 		read -p "What type of checksum file would you like to scan? (default 1) " ANSWER1
 		case "$ANSWER1" in
 			1 | md5 | "")
-				echo "MD5 scan..."
-				exit 0
+				md5sum -c SUMS.md5sum
 				;;
 			2 | 256)
 				echo "SHA256 scan coming soon..."
-				exit 0
 				;;
 			3 | 512)
 				echo "SHA512 scan coming soon..."
-				exit 0
 				;;
 			4 | sha3)
 				echo "SHA3-256 scan coming soon..."
-				exit 0
 				;;
 			*)
 				echo "ERROR: Invalid response - Aborted."
@@ -46,7 +42,15 @@ case "$ANSWER0" in
 		read -p "What type of checksum file would you like to create? (default 1) " ANSWER2
 		case "$ANSWER2" in
 			1 | md5 | "")
-				echo "MD5 make..."
+				read -p "A file named SUMS.md5sum will be created. If it exists, it will be overwritten! Continue? Y/n " WARN0
+				case "$WARN0" in
+					"" | [yY] | yes)
+						find -type f -exec md5sum "{}" + > SUMS.md5sum
+						;;
+					[nN] | no)
+						:
+						;;
+				esac
 				exit 0
 				;;
 			2 | 256)
