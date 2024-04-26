@@ -74,5 +74,6 @@ case "$ANSWER0" in
 	*)
 		echo "ERROR: Invalid response - Aborted."
 		exit 2
+		;;
 esac
 
